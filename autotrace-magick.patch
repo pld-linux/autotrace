@@ -1,0 +1,11 @@
+--- autotrace-0.27a/input-magick.c.orig	Tue Mar 20 12:01:05 2001
++++ autotrace-0.27a/input-magick.c	Thu Oct 25 23:32:08 2001
+@@ -17,7 +17,7 @@
+   PixelPacket p;
+   PixelPacket *pixel=&p;
+   ExceptionInfo exception;
+-  MagickIncarnate("");
++  InitializeMagick("");
+   GetExceptionInfo(&exception);
+   image_info=CloneImageInfo((ImageInfo *) NULL);
+   (void) strcpy(image_info->filename,filename);
