@@ -56,8 +56,9 @@ Biblioteka statyczna AutoTrace.
 %patch0 -p1
 
 %build
+rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
@@ -67,6 +68,7 @@ aclocal
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 %clean
