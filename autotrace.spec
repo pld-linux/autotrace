@@ -15,7 +15,7 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	libpng-devel >= 1.0.6
 BuildRequires:	ming-devel
-#BuildRequires:	pstoedit >= 0.32.1
+BuildRequires:	pstoedit >= 3.32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,7 +59,6 @@ Biblioteka statyczna AutoTrace.
 %patch1 -p1
 
 %build
-#rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
