@@ -2,7 +2,7 @@ Summary:	AutoTrace - convert bitmap to vector graphics
 Summary(pl):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
 Version:	0.31.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications
 Source0:	http://dl.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-aclocal.patch
 Patch2:		%{name}-am18.patch
+Patch3:		%{name}-magick6.patch
 URL:		http://autotrace.sourceforge.net/
 BuildRequires:	ImageMagick-devel >= 5.2.1
 BuildRequires:	autoconf
@@ -17,7 +18,7 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	libpng-devel >= 1.0.6
 BuildRequires:	ming-devel
-BuildRequires:	pstoedit-devel >= 3.32
+BuildRequires:	pstoedit-devel >= 3.33-4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,11 +36,11 @@ oraz swf.
 Summary:	AutoTrace library development files
 Summary(pl):	Pliki dla programistów u¿ywaj±cych biblioteki AutoTrace
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	ImageMagick-devel >= 5.2.1
 Requires:	libpng-devel >= 1.0.6
 Requires:	ming-devel
-Requires:	pstoedit-devel >= 3.32
+Requires:	pstoedit-devel >= 3.33-4
 
 %description devel
 AutoTrace library header files.
@@ -51,7 +52,7 @@ Pliki nag³ówkowe do biblioteki AutoTrace.
 Summary:	AutoTrace static library
 Summary(pl):	Biblioteka statyczna AutoTrace
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 AutoTrace static library.
@@ -64,6 +65,7 @@ Biblioteka statyczna AutoTrace.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
@@ -91,14 +93,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS
 %attr(755,root,root) %{_bindir}/autotrace
-%attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*.so
-%{_libdir}/*.la
 %attr(755,root,root) %{_bindir}/autotrace-config
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_includedir}/autotrace
 %{_aclocaldir}/autotrace.m4
 %{_pkgconfigdir}/*
