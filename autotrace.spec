@@ -1,20 +1,19 @@
 Summary:	AutoTrace - convert bitmap to vector graphics
-Summary(pl):	AutoTrace - konwersja grafiki rastrowej do wektorowej
+Summary(pl):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
-Version:	0.27a
+Version:	0.30
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/autotrace/%{name}-%{version}.tar.gz
 Patch0:		%{name}-shared.patch
-Patch1:		%{name}-magick.patch
 URL:		http://autotrace.sourceforge.net/
+BuildRequires:	ImageMagick-devel >= 5.2.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	libpng-devel >= 1.0.6
 BuildRequires:	ming-devel
-BuildRequires:	ImageMagick-devel >= 5.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -55,7 +54,6 @@ Biblioteka statyczna AutoTrace.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -71,8 +69,6 @@ aclocal
 rm -rf $RPM_BUILD_ROOT
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS NEWS README THANKS
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -81,9 +77,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS NEWS README THANKS
 %attr(755,root,root) %{_bindir}/autotrace
 %attr(755,root,root) %{_libdir}/*.so.*.*
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
@@ -92,6 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/autotrace-config
 %{_includedir}/autotrace
 %{_aclocaldir}/autotrace.m4
+%{_pkgconfigdir}/*
 
 %files static
 %defattr(644,root,root,755)
+%{_libdir}/lib*.a

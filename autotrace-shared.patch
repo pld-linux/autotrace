@@ -13,8 +13,8 @@
  output-emf.c output-emf.h \
  $(output_swf_src)
  
--libautotrace_a_SOURCES = version.c               \
-+libautotrace_la_SOURCES = version.c               \
+-libautotrace_a_SOURCES =\
++libautotrace_la_SOURCES =\
                  $(input_src) ${output_src}	\
  		fit.c				\
  		bitmap.c 			\
