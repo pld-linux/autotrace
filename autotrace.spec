@@ -5,7 +5,7 @@ Version:	0.31.1
 Release:	1
 License:	GPL
 Group:		Applications
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/autotrace/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-aclocal.patch
 URL:		http://autotrace.sourceforge.net/
