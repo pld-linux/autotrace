@@ -58,7 +58,7 @@ Biblioteka statyczna AutoTrace.
 %patch1 -p1
 
 %build
-libtoolize --copy --force
+%{__libtoolize}
 aclocal
 %{__autoconf}
 %{__automake}
