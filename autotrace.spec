@@ -16,7 +16,7 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	libpng-devel >= 1.0.6
 BuildRequires:	ming-devel
-BuildRequires:	pstoedit >= 3.32
+BuildRequires:	pstoedit-devel >= 3.32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
