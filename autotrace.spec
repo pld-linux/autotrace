@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://dl.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
+# Source0-md5:	54eabbb38d2076ded6d271e1ee4d0783
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-aclocal.patch
 URL:		http://autotrace.sourceforge.net/
