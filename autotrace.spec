@@ -13,6 +13,7 @@ Patch1:		%{name}-magick.patch
 URL:		http://autotrace.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	libpng-devel >= 1.0.6
 BuildRequires:	ming-devel
 BuildRequires:	ImageMagick-devel >= 5.2.1
