@@ -61,7 +61,7 @@ Biblioteka statyczna AutoTrace.
 libtoolize --copy --force
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
 	--enable-shared
 
