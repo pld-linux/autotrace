@@ -5,6 +5,8 @@ Version:	0.27a
 Release:	1
 License:	GPL
 Group:		Applications
+Group(de):	Applikationen
+Group(pl):	Aplikacje
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/autotrace/%{name}-%{version}.tar.gz
 Patch0:		%{name}-shared.patch
 Patch1:		%{name}-magick.patch
@@ -17,10 +19,9 @@ BuildRequires:	ImageMagick-devel >= 5.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-AutoTrace is a utility that converts bitmap to vector graphics.
-It can import p[nbgp]m, bmp, tga, png (and many more through
-ImageMagick) files and write to emf, eps, ai, er, fig, svg, sk and swf
-files.
+AutoTrace is a utility that converts bitmap to vector graphics. It can
+import p[nbgp]m, bmp, tga, png (and many more through ImageMagick)
+files and write to emf, eps, ai, er, fig, svg, sk and swf files.
 
 %description -l pl
 AutoTrace jest narzЙdziem do konwersji grafiki rastrowej na wektorow╠.
@@ -32,6 +33,13 @@ oraz swf.
 Summary:	AutoTrace library development files
 Summary(pl):	Pliki dla programistСw u©ywaj╠cych biblioteki AutoTrace
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -44,6 +52,13 @@ Pliki nagЁСwkowe do biblioteki AutoTrace.
 Summary:	AutoTrace static library
 Summary(pl):	Biblioteka statyczna AutoTrace
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
