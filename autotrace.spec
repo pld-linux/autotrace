@@ -1,5 +1,5 @@
 Summary:	AutoTrace - convert bitmap to vector graphics
-Summary(pl):	AutoTrace - konwerter grafiki rastrowej do wektorowej
+Summary(pl.UTF-8):   AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
 Version:	0.31.1
 Release:	7
@@ -26,15 +26,15 @@ AutoTrace is a utility that converts bitmap to vector graphics. It can
 import p[nbgp]m, bmp, tga, png (and many more through ImageMagick)
 files and write to emf, eps, ai, er, fig, svg, sk and swf files.
 
-%description -l pl
-AutoTrace jest narzÍdziem do konwersji grafiki rastrowej na wektorow±.
-Moøe wczytywaÊ pliki p[nbgp]m, bmp, tga, png (i wiele innych przez
-ImageMagick, a zapisywaÊ w formacie emf, eps, ai, er, fig, svg, sk
+%description -l pl.UTF-8
+AutoTrace jest narzƒôdziem do konwersji grafiki rastrowej na wektorowƒÖ.
+Mo≈ºe wczytywaƒá pliki p[nbgp]m, bmp, tga, png (i wiele innych przez
+ImageMagick, a zapisywaƒá w formacie emf, eps, ai, er, fig, svg, sk
 oraz swf.
 
 %package devel
 Summary:	AutoTrace library development files
-Summary(pl):	Pliki dla programistÛw uøywaj±cych biblioteki AutoTrace
+Summary(pl.UTF-8):   Pliki dla programist√≥w u≈ºywajƒÖcych biblioteki AutoTrace
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ImageMagick-devel >= 1:6.2.4.0
@@ -45,19 +45,19 @@ Requires:	pstoedit-devel >= 3.33-4
 %description devel
 AutoTrace library header files.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe do biblioteki AutoTrace.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe do biblioteki AutoTrace.
 
 %package static
 Summary:	AutoTrace static library
-Summary(pl):	Biblioteka statyczna AutoTrace
+Summary(pl.UTF-8):   Biblioteka statyczna AutoTrace
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 AutoTrace static library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna AutoTrace.
 
 %prep
