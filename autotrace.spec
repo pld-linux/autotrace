@@ -1,5 +1,5 @@
 Summary:	AutoTrace - convert bitmap to vector graphics
-Summary(pl.UTF-8):   AutoTrace - konwerter grafiki rastrowej do wektorowej
+Summary(pl.UTF-8):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
 Version:	0.31.1
 Release:	7
@@ -34,7 +34,7 @@ oraz swf.
 
 %package devel
 Summary:	AutoTrace library development files
-Summary(pl.UTF-8):   Pliki dla programistów używających biblioteki AutoTrace
+Summary(pl.UTF-8):	Pliki dla programistów używających biblioteki AutoTrace
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ImageMagick-devel >= 1:6.2.4.0
@@ -50,7 +50,7 @@ Pliki nagłówkowe do biblioteki AutoTrace.
 
 %package static
 Summary:	AutoTrace static library
-Summary(pl.UTF-8):   Biblioteka statyczna AutoTrace
+Summary(pl.UTF-8):	Biblioteka statyczna AutoTrace
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
