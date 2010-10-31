@@ -3,9 +3,9 @@ Summary(pl.UTF-8):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
 Version:	0.31.1
 Release:	7
-License:	GPL
-Group:		Applications
-Source0:	http://dl.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
+License:	GPL v2+
+Group:		Applications/Graphics
+Source0:	http://downloads.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
 # Source0-md5:	54eabbb38d2076ded6d271e1ee4d0783
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-aclocal.patch
@@ -71,9 +71,9 @@ Biblioteka statyczna AutoTrace.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
-%configure \
-	--enable-shared
+%configure
 
 %{__make}
 
@@ -93,18 +93,19 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS
 %attr(755,root,root) %{_bindir}/autotrace
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_libdir}/libautotrace.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libautotrace.so.3
+%{_mandir}/man1/autotrace.1*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/autotrace-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libautotrace.so
+%{_libdir}/libautotrace.la
 %{_includedir}/autotrace
 %{_aclocaldir}/autotrace.m4
-%{_pkgconfigdir}/*
+%{_pkgconfigdir}/autotrace.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libautotrace.a
