@@ -2,7 +2,7 @@ Summary:	AutoTrace - convert bitmap to vector graphics
 Summary(pl.UTF-8):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
 Version:	0.31.1
-Release:	7
+Release:	8
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
@@ -11,6 +11,8 @@ Patch0:		%{name}-link.patch
 Patch1:		%{name}-aclocal.patch
 Patch2:		%{name}-am18.patch
 Patch3:		%{name}-magick6.patch
+Patch4:		%{name}-am.patch
+Patch5:		%{name}-libpng.patch
 URL:		http://autotrace.sourceforge.net/
 BuildRequires:	ImageMagick-devel >= 1:6.2.4.0
 BuildRequires:	autoconf
@@ -66,6 +68,8 @@ Biblioteka statyczna AutoTrace.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %{__libtoolize}
