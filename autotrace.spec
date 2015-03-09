@@ -2,7 +2,7 @@ Summary:	AutoTrace - convert bitmap to vector graphics
 Summary(pl.UTF-8):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
 Version:	0.31.1
-Release:	14
+Release:	14.1
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
