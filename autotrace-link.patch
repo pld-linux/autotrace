@@ -27,3 +27,22 @@
  
  m4datadir = $(datadir)/aclocal
  m4data_DATA = autotrace.m4
+--- autotrace-0.31.1/autotrace-config.af.orig	2002-10-10 22:43:58.000000000 +0200
++++ autotrace-0.31.1/autotrace-config.af	2022-04-11 19:26:53.462381571 +0200
+@@ -16,4 +16,4 @@ AF_ARG_VERSION(@VERSION@)
+ #dummy because this should always be selected
+ AF_LIBRARY(autotrace)
+ AF_DEF_CFLAGS([-I@includedir@])
+-AF_DEF_LIBS([-L@libdir@ -lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@])
++AF_DEF_LIBS([-lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@])
+--- autotrace-0.31.1/autotrace-config.in.orig	2002-11-08 19:18:31.000000000 +0100
++++ autotrace-0.31.1/autotrace-config.in	2022-04-11 19:27:10.912287037 +0200
+@@ -205,7 +205,7 @@ fi
+ #dummy because this should always be selected
+ 
+ af_cflags="$af_cflags -I@includedir@"
+-af_libs="-L@libdir@ -lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@ $af_libs"
++af_libs="-lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@ $af_libs"
+ 
+ 
+ 

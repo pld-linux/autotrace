@@ -2,7 +2,7 @@ Summary:	AutoTrace - convert bitmap to vector graphics
 Summary(pl.UTF-8):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
 Version:	0.31.1
-Release:	17
+Release:	18
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
@@ -13,6 +13,10 @@ Patch2:		%{name}-am18.patch
 Patch3:		%{name}-magick6.patch
 Patch4:		%{name}-am.patch
 Patch5:		%{name}-libpng.patch
+Patch6:		%{name}-CVE-2013-1953.patch
+Patch7:		%{name}-CVE-2016-7392.patch
+Patch8:		%{name}-CVE-2019-19004.patch
+Patch9:		%{name}-CVE-2019-19005.patch
 URL:		http://autotrace.sourceforge.net/
 BuildRequires:	ImageMagick-devel >= 1:6.2.4.0
 BuildRequires:	autoconf
@@ -70,6 +74,10 @@ Biblioteka statyczna AutoTrace.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 %{__libtoolize}
@@ -86,6 +94,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libautotrace.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -105,7 +116,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/autotrace-config
 %attr(755,root,root) %{_libdir}/libautotrace.so
-%{_libdir}/libautotrace.la
 %{_includedir}/autotrace
 %{_aclocaldir}/autotrace.m4
 %{_pkgconfigdir}/autotrace.pc
