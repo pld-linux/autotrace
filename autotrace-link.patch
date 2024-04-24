@@ -1,48 +1,35 @@
---- autotrace-0.31.1/Makefile.am.orig	Wed Oct 30 17:51:46 2002
-+++ autotrace-0.31.1/Makefile.am	Wed Dec 18 22:31:46 2002
-@@ -105,6 +105,12 @@
- 		exception.h
+--- autotrace-0.31.10/Makefile.am.orig	2024-04-24 20:13:30.403400098 +0200
++++ autotrace-0.31.10/Makefile.am	2024-04-24 20:21:31.257461755 +0200
+@@ -128,6 +128,15 @@ autotraceinclude_HEADERS=\
+ 		src/color.h
  
  libautotrace_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 +libautotrace_la_LIBADD = \
-+		$(MAGICK_LDFLAGS)		\
-+		$(LIBPNG_LDFLAGS)		\
-+		$(LIBSWF_LDFLAGS)		\
++		$(GRAPHICSMAGICK_LIBS)		\
++		$(IMAGEMAGICK_LIBS)		\
++		$(LIBPNG_LIBS)		\
++		$(LIBSWF_LIBS)		\
 +		$(LIBPSTOEDIT_LIBS)		\
++		$(GLIB2_LIBS)			\
++		$(INTLLIBS)			\
 +		-lm
  
  #
  # noinst_HEADERS: headers shared between lib and bin.
-@@ -127,12 +133,7 @@
+@@ -145,15 +154,8 @@ AM_CPPFLAGS = $(GRAPHICSMAGICK_CFLAGS) $
  
- INCLUDES = $(MAGICK_CFLAGS) $(LIBPSTOEDIT_CFLAGS)
  autotrace_LDADD =				\
--		libautotrace.la			\
--		$(MAGICK_LDFLAGS)		\
--		$(LIBPNG_LDFLAGS)		\
--		$(LIBSWF_LDFLAGS)		\
+ 		libautotrace.la			\
+-		$(GRAPHICSMAGICK_LIBS)		\
+-		$(IMAGEMAGICK_LIBS)		\
+-		$(LIBPNG_LIBS)		\
+-		$(LIBSWF_LIBS)		\
 -		$(LIBPSTOEDIT_LIBS)		\
+-		$(GLIB2_LIBS)			\
+ 		$(POPT_LIBS)			\
+-		$(INTLLIBS)			\
 -		-lm
-+		libautotrace.la
++		$(nil)
  
- m4datadir = $(datadir)/aclocal
- m4data_DATA = autotrace.m4
---- autotrace-0.31.1/autotrace-config.af.orig	2002-10-10 22:43:58.000000000 +0200
-+++ autotrace-0.31.1/autotrace-config.af	2022-04-11 19:26:53.462381571 +0200
-@@ -16,4 +16,4 @@ AF_ARG_VERSION(@VERSION@)
- #dummy because this should always be selected
- AF_LIBRARY(autotrace)
- AF_DEF_CFLAGS([-I@includedir@])
--AF_DEF_LIBS([-L@libdir@ -lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@])
-+AF_DEF_LIBS([-lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@])
---- autotrace-0.31.1/autotrace-config.in.orig	2002-11-08 19:18:31.000000000 +0100
-+++ autotrace-0.31.1/autotrace-config.in	2022-04-11 19:27:10.912287037 +0200
-@@ -205,7 +205,7 @@ fi
- #dummy because this should always be selected
- 
- af_cflags="$af_cflags -I@includedir@"
--af_libs="-L@libdir@ -lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@ $af_libs"
-+af_libs="-lautotrace @LIBPNG_LDFLAGS@ @MAGICK_LDFLAGS@ @LIBSWF_LDFLAGS@ @LIBPSTOEDIT_LIBS@ $af_libs"
- 
- 
- 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA= autotrace.pc

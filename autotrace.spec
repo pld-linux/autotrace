@@ -1,30 +1,27 @@
 Summary:	AutoTrace - convert bitmap to vector graphics
 Summary(pl.UTF-8):	AutoTrace - konwerter grafiki rastrowej do wektorowej
 Name:		autotrace
-Version:	0.31.1
-Release:	18
+Version:	0.31.10
+Release:	1
 License:	GPL v2+
 Group:		Applications/Graphics
-Source0:	http://downloads.sourceforge.net/autotrace/%{name}-%{version}.tar.gz
-# Source0-md5:	54eabbb38d2076ded6d271e1ee4d0783
+#Source0Download: https://github.com/autotrace/autotrace/releases
+Source0:	https://github.com/autotrace/autotrace/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	3078d2530a65f28c31c89974671ef02a
 Patch0:		%{name}-link.patch
-Patch1:		%{name}-aclocal.patch
-Patch2:		%{name}-am18.patch
-Patch3:		%{name}-magick6.patch
-Patch4:		%{name}-am.patch
-Patch5:		%{name}-libpng.patch
-Patch6:		%{name}-CVE-2013-1953.patch
-Patch7:		%{name}-CVE-2016-7392.patch
-Patch8:		%{name}-CVE-2019-19004.patch
-Patch9:		%{name}-CVE-2019-19005.patch
-URL:		http://autotrace.sourceforge.net/
-BuildRequires:	ImageMagick-devel >= 1:6.2.4.0
-BuildRequires:	autoconf
+URL:		https://autotrace.sourceforge.net/
+BuildRequires:	ImageMagick-devel >= 1:7.0.1
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libtool
+BuildRequires:	gettext-tools >= 0.22.5
+BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	intltool >= 0.50.1
+BuildRequires:	libtool >= 2:2
 BuildRequires:	libpng-devel >= 1.0.6
 BuildRequires:	ming-devel
+BuildRequires:	pkgconfig
 BuildRequires:	pstoedit-devel >= 3.33-4
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -43,7 +40,8 @@ Summary:	AutoTrace library development files
 Summary(pl.UTF-8):	Pliki dla programistów używających biblioteki AutoTrace
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ImageMagick-devel >= 1:6.2.4.0
+Requires:	ImageMagick-devel >= 1:7.0.1
+Requires:	glib2-devel >= 2.0
 Requires:	libpng-devel >= 1.0.6
 Requires:	ming-devel
 Requires:	pstoedit-devel >= 3.33-4
@@ -69,19 +67,14 @@ Biblioteka statyczna AutoTrace.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+
+%{__sed} -i -e 's,po/Makefile.in ,,' configure.ac
 
 %build
+%{__gettextize}
+%{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -98,15 +91,17 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libautotrace.la
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README THANKS
+%doc AUTHORS NEWS README.md THANKS TODO
 %attr(755,root,root) %{_bindir}/autotrace
 %attr(755,root,root) %{_libdir}/libautotrace.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libautotrace.so.3
@@ -114,10 +109,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/autotrace-config
 %attr(755,root,root) %{_libdir}/libautotrace.so
 %{_includedir}/autotrace
-%{_aclocaldir}/autotrace.m4
 %{_pkgconfigdir}/autotrace.pc
 
 %files static
