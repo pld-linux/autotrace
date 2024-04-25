@@ -1,0 +1,10 @@
+--- autotrace-0.31.10/autotrace.pc.in.orig	2024-01-29 22:37:09.000000000 +0100
++++ autotrace-0.31.10/autotrace.pc.in	2024-04-25 06:21:25.582543612 +0200
+@@ -7,5 +7,5 @@ Name: Autotrace
+ Description: a utility that converts bitmap to vector graphics
+ Version: @VERSION@
+ Requires:
+-Libs: -L@libdir@ -lautotrace @LIBPNG_LIBS@ @MAGICK_LIBS@ @LIBSWF_LIBS@ @LIBPSTOEDIT_LIBS@ @GLIB2_LIBS@
+-Cflags: -I@includedir@ @MAGICK_CFLAGS@ @LIBPSTOEDIT_CFLAGS@ @GLIB2_CFLAGS@
++Libs: -L@libdir@ -lautotrace @LIBPNG_LIBS@ @GRAPHICSMAGICK_LIBS@ @IMAGEMAGICK_LIBS@ @LIBSWF_LIBS@ @LIBPSTOEDIT_LIBS@ @GLIB2_LIBS@
++Cflags: -I@includedir@ @GRAPHICSMAGICK_CFLAGS@ @IMAGEMAGICK_CFLAGS@ @LIBPSTOEDIT_CFLAGS@ @GLIB2_CFLAGS@

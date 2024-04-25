@@ -9,6 +9,7 @@ Group:		Applications/Graphics
 Source0:	https://github.com/autotrace/autotrace/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	3078d2530a65f28c31c89974671ef02a
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-pc.patch
 URL:		https://autotrace.sourceforge.net/
 BuildRequires:	ImageMagick-devel >= 1:7.0.1
 BuildRequires:	autoconf >= 2.50
@@ -67,6 +68,7 @@ Biblioteka statyczna AutoTrace.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %{__sed} -i -e 's,po/Makefile.in ,,' configure.ac
 
@@ -78,7 +80,8 @@ Biblioteka statyczna AutoTrace.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--with-magick=ImageMagick
 
 %{__make}
 
